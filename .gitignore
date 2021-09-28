@@ -3,3 +3,12 @@
 ################################################################################
 
 /CustomerBasket/CustomerBasket.Core/obj/Debug/netcoreapp3.1
+/CustomerBasket/CustomerBasket.Core/obj
+/CustomerBasket/CustomerBasket.Core/bin/Debug/netcoreapp3.1
+/CustomerBasket/CustomerBasket.Core.Tests/bin/Debug/netcoreapp3.1/cs
+/CustomerBasket/CustomerBasket.Core.Tests/bin/Debug/netcoreapp3.1
+/CustomerBasket/CustomerBasket.Core.Tests/obj/Debug/netcoreapp3.1
+/CustomerBasket/CustomerBasket.Core.Tests/obj
+/CustomerBasket/.vs/CustomerBasket/v16
+/.vs/KolaCustomerBasket/v16
+/.vs

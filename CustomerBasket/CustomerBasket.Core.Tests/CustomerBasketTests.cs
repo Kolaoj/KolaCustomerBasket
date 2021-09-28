@@ -1,17 +1,20 @@
 using System;
 using System.Collections.Generic;
 using CustomerBasket.Core.DiscountCalculators;
+using CustomerBasket.Core.Items;
 using NUnit.Framework;
 
 namespace CustomerBasket.Core
 {
     public class CustomerBasketTests
     {
-        private readonly Item _bread = new Item {Name = "Bread", Price = 1.00};
-        private readonly Item _butter = new Item {Name = "Butter", Price = 0.80};
-        private readonly Item _milk = new Item {Name = "Milk", Price = 1.15};
+        private readonly Item _bread = new Bread {Price = 1.00};
+        private readonly Item _butter = new Butter {Price = 0.80};
+        private readonly Item _milk = new Milk {Price = 1.15};
         private List<Item> _basketItems;
+
         private CustomerBasketCalculator _basketCalculator;
+
         private IDiscountCalculator _twoButterOneBreadDiscount;
         private IDiscountCalculator _fourMilksDiscount;
         private List<IDiscountCalculator> _discountCalculators;
@@ -54,6 +57,25 @@ namespace CustomerBasket.Core
 
             Assert.AreEqual("£3.10", total);
             Assert.AreEqual("Savings made: £0.50", savings);
+        }
+
+        //Extra test to make sure Two butter logic works correctly
+        [Test]
+        public void FourButtersAndFourBreadsInABasketShouldTotalTheCorrectAmountWithADiscount()
+        {
+            _basketItems.Add(_bread);
+            _basketItems.Add(_bread);
+            _basketItems.Add(_bread);
+            _basketItems.Add(_bread);
+            _basketItems.Add(_butter);
+            _basketItems.Add(_butter);
+            _basketItems.Add(_butter);
+            _basketItems.Add(_butter);
+
+            var (total, savings) = _basketCalculator.CalculateBasket(_basketItems);
+
+            Assert.AreEqual("£6.20", total);
+            Assert.AreEqual("Savings made: £1.00", savings);
         }
 
         [Test]

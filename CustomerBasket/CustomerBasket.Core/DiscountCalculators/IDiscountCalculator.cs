@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CustomerBasket.Core.Items;
 
 namespace CustomerBasket.Core.DiscountCalculators
 {

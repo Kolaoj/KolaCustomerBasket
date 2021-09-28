@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CustomerBasket.Core.Items;
 
 namespace CustomerBasket.Core.DiscountCalculators
 {
@@ -15,25 +16,25 @@ namespace CustomerBasket.Core.DiscountCalculators
 
             foreach (var item in items)
             {
-                if (item.Name.Equals("Butter", StringComparison.CurrentCultureIgnoreCase))
+                if (item.GetType().Name.Equals("Butter", StringComparison.CurrentCultureIgnoreCase))
                 {
                     butterCounter++;
                     noOfButters.Add(butterCounter);
                 }
-                else if (item.Name.Equals("Bread", StringComparison.CurrentCultureIgnoreCase))
+                else if (item.GetType().Name.Equals("Bread", StringComparison.CurrentCultureIgnoreCase))
                 {
                     listOfBreads.Add(item);
                 }
             }
 
-            var noOfAvailableDiscount = noOfButters.Count(butterCount => butterCount % 2 == 0);
+            var noOfAvailableDiscounts = noOfButters.Count(butterCount => butterCount % 2 == 0);
 
             foreach (var bread in listOfBreads)
             {
-                if (noOfAvailableDiscount != 0)
+                if (noOfAvailableDiscounts != 0)
                 {
                     priceDeduction += bread.Price / 2;
-                    noOfAvailableDiscount--;
+                    noOfAvailableDiscounts--;
                 }
                 else
                 {

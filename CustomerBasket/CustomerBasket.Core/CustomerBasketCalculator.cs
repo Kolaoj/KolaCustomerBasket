@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using CustomerBasket.Core.DiscountCalculators;
+using CustomerBasket.Core.Items;
 
 namespace CustomerBasket.Core
 {

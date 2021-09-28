@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace CustomerBasket.Core
 {
     public class CustomerBasketCalculator
     {
-        public object CalculateBasket(List<Item> itemsToAdd)
+        public string CalculateBasket(IEnumerable<Item> items)
         {
-            throw new NotImplementedException();
+            var price = items.Sum(item => item.Price);
+
+            return price.ToString("C", CultureInfo.CurrentCulture);
         }
     }
 }

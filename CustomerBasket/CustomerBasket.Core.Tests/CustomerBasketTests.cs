@@ -15,7 +15,6 @@ namespace CustomerBasket.Core
         private IDiscountCalculator _twoButterOneBreadDiscount;
         private List<IDiscountCalculator> _discountCalculators;
 
-
         [SetUp]
         public void SetUp()
         {
@@ -53,6 +52,20 @@ namespace CustomerBasket.Core
 
             Assert.AreEqual("£3.10", total);
             Assert.AreEqual("Savings made: £0.50", savings);
+        }
+
+        [Test]
+        public void FourMilksShouldTotalTheCorrectAmountWithADiscount()
+        {
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+
+            var (total, savings) = _basketCalculator.CalculateBasket(_basketItems);
+
+            Assert.AreEqual("£3.45", total);
+            Assert.AreEqual("Savings made: £1.15", savings);
         }
     }
 }

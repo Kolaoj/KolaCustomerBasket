@@ -13,6 +13,7 @@ namespace CustomerBasket.Core
         private List<Item> _basketItems;
         private CustomerBasketCalculator _basketCalculator;
         private IDiscountCalculator _twoButterOneBreadDiscount;
+        private IDiscountCalculator _fourMilksDiscount;
         private List<IDiscountCalculator> _discountCalculators;
 
         [SetUp]
@@ -21,8 +22,9 @@ namespace CustomerBasket.Core
             _basketItems = new List<Item>();
 
             _twoButterOneBreadDiscount = new TwoButtersOneBreadDiscount();
+            _fourMilksDiscount = new FourMilksDiscount();
 
-            _discountCalculators = new List<IDiscountCalculator> { _twoButterOneBreadDiscount };
+            _discountCalculators = new List<IDiscountCalculator> {_twoButterOneBreadDiscount, _fourMilksDiscount};
 
             _basketCalculator = new CustomerBasketCalculator(_discountCalculators);
         }

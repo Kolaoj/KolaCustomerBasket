@@ -69,5 +69,26 @@ namespace CustomerBasket.Core
             Assert.AreEqual("£3.45", total);
             Assert.AreEqual("Savings made: £1.15", savings);
         }
+
+        [Test]
+        public void TwoButtersOneBreadAndEightMilksShouldTotalTheCorrectAmountWithADiscount()
+        {
+            _basketItems.Add(_butter);
+            _basketItems.Add(_butter);
+            _basketItems.Add(_bread);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+            _basketItems.Add(_milk);
+
+            var (total, savings) = _basketCalculator.CalculateBasket(_basketItems);
+
+            Assert.AreEqual("£9.00", total);
+            Assert.AreEqual("Savings made: £2.80", savings);
+        }
     }
 }

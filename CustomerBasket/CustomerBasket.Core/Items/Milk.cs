@@ -2,6 +2,6 @@
 {
     public class Milk : Item
     {
-        public override double Price { get; set; } = 1.15;
+        public override double Price { get; } = 1.15;
     }
 }

@@ -2,6 +2,6 @@
 {
     public class Bread : Item
     {
-        public override double Price { get; set; } = 1.00;
+        public override double Price { get; } = 1.00;
     }
 }
